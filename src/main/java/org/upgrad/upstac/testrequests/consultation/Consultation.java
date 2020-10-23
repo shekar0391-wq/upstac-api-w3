@@ -18,27 +18,55 @@ public class Consultation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    public TestRequest getRequest() {
+        return request;
+    }
+
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @ToString.Exclude
     private TestRequest request;
 
+    public void setSuggestion(DoctorSuggestion suggestion) {
+        this.suggestion = suggestion;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public void setUpdatedOn(LocalDate updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
     private DoctorSuggestion suggestion;
 
+
+    public DoctorSuggestion getSuggestion() {
+        return suggestion;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public LocalDate getUpdatedOn() {
+        return updatedOn;
+    }
 
     private String comments;
 
     private LocalDate updatedOn;
 
+    public void setRequest(TestRequest request) {
+        this.request = request;
+    }
+
+    public void setDoctor(User doctor) {
+        this.doctor = doctor;
+    }
+
     @ManyToOne
     User doctor;
-
-
-
-
-
-
-
-
 
 }
