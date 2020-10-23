@@ -25,19 +25,20 @@ public class ConsultationService {
         //Implement this method to assign the consultation service
         // create object of Consultation class and use the setter methods to set doctor and testRequest details
         // make use of save() method of consultationRepository to return the Consultation object
-        return null; // replace this line with your code
-
-
+        Consultation comments = new Consultation();
+        comments.setRequest(testRequest);
+        comments.setDoctor(doctor);
+        return consultationRepository.save(comments);
     }
 
     public Consultation updateConsultation(TestRequest testRequest , CreateConsultationRequest createConsultationRequest) {
         //Implement this method to update the consultation
         // create an object of Consultation and make use of setters to set Suggestion, Comments, and UpdatedOn values
         // make use of save() method of consultationRepository to return the Consultation object
-        return null; // replace this line with your code
-
-
+        Consultation comments = new Consultation();
+        comments.setSuggestion(createConsultationRequest.getSuggestion());
+        comments.setComments(createConsultationRequest.getComments());
+        return consultationRepository.save(comments);
     }
-
 
 }

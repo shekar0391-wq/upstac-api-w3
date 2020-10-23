@@ -101,17 +101,8 @@ public class TestRequestQueryService {
     }
     public Optional<TestRequest> findByTesterAndID(User tester,Long id) {
 
-
-
-
         return  testRequestRepository.findByRequestId(id)
                 .filter(testRequest -> labResultRepository.findByTesterAndRequest(tester,testRequest).isPresent());
-
-
-
-
-
-
 
     }
 

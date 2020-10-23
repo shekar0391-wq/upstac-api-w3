@@ -9,25 +9,24 @@ import org.upgrad.upstac.testrequests.TestRequest;
 import org.upgrad.upstac.users.User;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 @Validated
 public class LabResultService {
 
-
     @Autowired
     private LabResultRepository labResultRepository;
-
-
     private static Logger logger = LoggerFactory.getLogger(LabResultService.class);
-
-
-
     private LabResult createLabResult(User tester, TestRequest testRequest) {
         //Implement this method to create the lab result module service
         // create object of LabResult class and use the setter methods to set tester and testRequest details
         // make use of saveLabResult() method to return the LabResult object
-        return null; // replace this line with your code
+        LabResult result = new LabResult();
+        result.setTester(tester);
+        result.setRequest(testRequest);
+        return saveLabResult(result);
     }
 
     @Transactional
@@ -35,15 +34,9 @@ public class LabResultService {
         return labResultRepository.save(labResult);
     }
 
-
-
     public LabResult assignForLabTest(TestRequest testRequest, User tester) {
-
         return createLabResult(tester, testRequest);
-
-
     }
-
 
     public LabResult updateLabTest(TestRequest testRequest, CreateLabResult createLabResult) {
 
@@ -51,11 +44,15 @@ public class LabResultService {
         // create an object of LabResult and make use of setters to set Blood Pressure, Comments,
         // HeartBeat, OxygenLevel, Temperature, Result and UpdatedOn values
         // make use of the saveLabResult() method to return the object of LabResult
-
-        return null; // replace this line with your code
-
-
+        LabResult result = new LabResult();
+        result.setRequest(testRequest);
+        result.setBloodPressure(createLabResult.getBloodPressure());
+        result.setComments(createLabResult.getComments());
+        result.setHeartBeat(createLabResult.getHeartBeat());
+        result.setOxygenLevel(createLabResult.getOxygenLevel());
+        result.setTemperature(createLabResult.getTemperature());
+        result.setResult(createLabResult.getResult());
+        result.setUpdatedOn(LocalDate.now());
+        return saveLabResult(result);
     }
-
-
 }

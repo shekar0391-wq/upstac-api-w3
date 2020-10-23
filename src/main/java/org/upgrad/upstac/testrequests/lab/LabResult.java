@@ -18,6 +18,42 @@ public class LabResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long resultId;
 
+    public void setRequest(TestRequest request) {
+        this.request = request;
+    }
+
+    public void setTester(User tester) {
+        this.tester = tester;
+    }
+
+    public void setBloodPressure(String bloodPressure) {
+        this.bloodPressure = bloodPressure;
+    }
+
+    public void setHeartBeat(String heartBeat) {
+        this.heartBeat = heartBeat;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setOxygenLevel(String oxygenLevel) {
+        this.oxygenLevel = oxygenLevel;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public void setResult(TestStatus result) {
+        this.result = result;
+    }
+
+    public void setUpdatedOn(LocalDate updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @ToString.Exclude
